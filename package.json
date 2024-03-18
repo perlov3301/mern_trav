@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node backend/server.js",
-    "server": "nodemon backend/server.js"
+    "server": "nodemon backend/server.js",
+    "github": "https://github.com/perlov3301/mern_trav.git"
   },
   "author": "traversy",
   "license": "ISC",
