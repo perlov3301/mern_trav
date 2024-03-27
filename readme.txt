@@ -33,14 +33,39 @@ Visit Network Access to modify your settings.
 1.Add a connection IP address
  our current IP address (147.235.209.3) has been added to enable local connectivity.
 2.Create a database user(name-password)
- perlov1001-perlov1001
+ perlov1001-perl1001
 ** choose a connection method
  ***with nodejs driver
    1.npm install mongodb
    2.add connection string into application code
-     mongodb+srv://perlov1001:perlov1001@mernauth.2buv02r.mongodb.net/?
-     retryWrites=true&w=majority&appName=mernauth
-     mongodb+srv://perlov1001:<password>@mernauth.2buv02r.mongodb.net/?retryWrites=true&w=majority&appName=mernauth
+      const uri ="mongodb+srv://<user>:<password>@<cluster-url>?retryWrites=true&writeConcern=majority";
+mongodb+srv://perlov1001:perl1001@mernauth.yqxxozd.mongodb.net/?retryWrites=true&w=majority&appName=mernauth
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://perlov1001:perl1001@mernauth.yqxxozd.mongodb.net/?retryWrites=true&w=majority&appName=mernauth";
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+
  ***from vscode 
  ***from data explorer
  ***from Shell

@@ -1,15 +1,17 @@
 import express from 'express';
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 // config() loads .env file contents into process.env
 dotenv.config();
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
-import db from './config/db.js';
+import connectDB from './config/db.js';
 const port = process.env.PORT || 5000; 
 import userRoutes from './routes/userRoutes.js';
-import connectDB from './config/db.js';
 
-connectDB();
+connectDB();//we should see in console hash.yqxxozd.mongodb.net
 const app = express(); //initialzing express
+// middleware to parse http request.body
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));//to send form data
 app.use('/api/users', userRoutes); // for testing out use Postman
 // app.use('/',(req, res)=> res.send('<h1>serverjs,Hello World</h1>'));
 

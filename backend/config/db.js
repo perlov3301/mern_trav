@@ -1,14 +1,24 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
+//.env was loaded into proccess.env within serverjs
 
 const connectDB = async () => {
+    console.log("dbjs; before await mongoose.connect");
     try {
         const conn = await mongoose.connect(process.env.MONGO_URI);
-        console.log(`MongoDB connected ${conn.ConnectionStates} 
-          ${conn.connection.host} to ${conn.connection.db}`);
+        console.log(`dbjs;MongoDB connected ${conn.connection.host}`);
     } catch(error) {
-        console.error(`error: ${error.message}`);
+        console.error(`dbjs;error: ${error.message}`);
         process.exit(1);
     }
 };
 
 export default connectDB;
+/**
+ Connection ready state
+
+0 = disconnected
+1 = connected
+2 = connecting
+3 = disconnecting
+99= uninitialized
+ */

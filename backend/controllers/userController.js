@@ -1,5 +1,6 @@
 // buiseness logic for routes error handler
    import asyncHandler from "express-async-handler";
+   import User from "../models/userModel.js";
 // @desc Auth user/set token
 // route POST request to  /api/users/auth
 // @access Public=you don't have to be loged in to access this route
@@ -10,7 +11,23 @@ const authUser = asyncHandler( async (req, res) => {
 // route POST /api/users
 //@access Public
 const registerUser = asyncHandler(async (req, res)=>{
-     res.status(200).json({message: 'Register User async'});
+    // we need a midleware body_parser within server to
+    // get data from http body that is send with request
+    const { name,email, password } = req.body;//name:name,...
+    console.log(req.body);
+    const userExists = await User.findOne({email});// equal email:email
+    if(userExists) { // client error
+        res.status(400);
+        throw Error("user already exists"); 
+    }
+    // we are going to create user
+      const user = await User.create({
+        name:name,
+        email:email,
+        password:password,
+      });
+      if(user) { res.status(201).json({message: 'user created asyncronousoly'}); }
+      else { res.status(500).json({message: 'something went wrong'}); }
     });
 // @desc Logout user
 // route POST /api/users/logout
