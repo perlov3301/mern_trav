@@ -7,12 +7,14 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "github": "https://github.com/perlov3301/mern_trav.git"
+    "github": "https://github.com/perlov3301/mern_trav.git",
+    "token": "nodemon token_medium/app_jwt.js"
   },
   "author": "traversy",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
@@ -22,5 +24,6 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
-  }
+  },
+  "compass": "mongodb+srv://perlov1001:perl1001@mernauth.yqxxozd.mongodb.net/"
 }

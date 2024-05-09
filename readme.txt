@@ -8,6 +8,8 @@ interact with Mongodb => Mongoose
 we use JWT for authentication=> jsonwebtoken
 cookie-parser for store cookie in HTML local storage
 #entry Point for API=>server.js
+postman: mern_travers=>content-Type=application/x-www-form-urlencoded
+       medium_android=>content-Type=application/json
 
 * within package.json add:
 "type":"module" to allow import syntax with simple ES (instead of commonjs)
@@ -70,4 +72,5 @@ run().catch(console.dir);
  ***from data explorer
  ***from Shell
  ***with compass
+   connection string:mongodb+srv://perlov1001:perl1001@mernauth.yqxxozd.mongodb.net/
  ***atlas sql
