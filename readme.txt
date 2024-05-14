@@ -74,3 +74,20 @@ run().catch(console.dir);
  ***with compass
    connection string:mongodb+srv://perlov1001:perl1001@mernauth.yqxxozd.mongodb.net/
  ***atlas sql
+ *** frontend
+  *vite.dev
+  *redux-toolkit.js.org
+  *react-bootstrap.github.io
+****npm create vite@latest frontend
+*git repo within git repo:
+If you put a git repo inside another git repo, and don't use submodules (or subtrees), you will need/want to add the inner repo directory to the outer repo's .gitignore file. 
+Otherwise the outer git will want to track changes to both repos (ie. it doesn't automatically see the .git dir and ignore that repo, 
+although it *does* have some handling for the second .git directory itself).
+Once you have git ignored the sub-repo, you can mostly work as though they are two totally separate repos (afaik). That's a plus and a minus. 
+The inner repo will not propagate if the outer one is cloned, so you may end up losing all the work in that repo if you don't make efforts to ensure it's backed up when managing the outer one.
+ Users won't know it exists just from the outer one alone, and it's possible (but unlikely) that he overlapping urls will confuse some tools that manage repos. 
+And if the outer repo has dependencies on the inner one (like version numbers that should be kept in sync), git will offer no help in that area (unlike with submodules).
+It's more common (I think) to simply make a symbolic link to the inner repo, and place it elsewhere, rather than actually store it inside another repo; 
+the main reason being that it can be otherwise forgotten, and accidentally lost or deleted, since people often clone, rather than file copy repos. Consider using symlinks instead of nested repos. 
+Or bite-the-bullet and use submodules. Or just keep the repos as peers, and use other tools to deploy that can handle the dependencies of one repo on another.
+*** instead of two cmd_powershell we install npm i -D concurrently

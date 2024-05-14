@@ -7,9 +7,10 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "github": "https://github.com/perlov3301/mern_trav.git",
-    "token": "nodemon token_medium/app_jwt.js"
+    "client": "npm run dev --prefix frontend",
+    "dev": "concurrently \"nodemon backend/server.js\" \"npm run dev --prefix frontend\""
   },
+  "github": "https://github.com/perlov3301/mern_trav.git",
   "author": "traversy",
   "license": "ISC",
   "dependencies": {
@@ -23,6 +24,7 @@
     "mongoose": "^8.0.3"
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "nodemon": "^3.0.2"
   },
   "compass": "mongodb+srv://perlov1001:perl1001@mernauth.yqxxozd.mongodb.net/"
